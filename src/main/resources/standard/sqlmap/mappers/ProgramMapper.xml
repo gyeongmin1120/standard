@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="standard.program.mapper.ProgramMapper">
+	
+
+    
+	<select id="selectProgramList" resultType="programVO">
+		SELECT
+            b.id, 
+			b.title
+		FROM(
+			SELECT
+				id
+			FROM `tb_sample_program`
+			WHERE 1=1
+			<if test="searchTitle != null and searchTitle != '' ">
+				 AND title LIKE CONCAT('%', #{searchTitle}, '%')
+			</if>
+			ORDER BY id ASC
+			LIMIT #{firstIndex}, #{recordCountPerPage}
+		) a
+		JOIN `tb_sample_program` b
+		ON a.id = b.id
+
+     
+	</select>
+	
+	<select id="selectProgramListTotalCount" resultType="int">
+
+		SELECT
+			COUNT(*)
+		FROM `tb_sample_program`
+		WHERE 1=1
+		<if test="searchTitle != null and searchTitle != '' ">
+			AND title LIKE CONCAT('%', #{searchTitle}, '%')
+		</if>
+		
+	</select>
+	
+	<select id="selectProgram" resultType="programVO">
+		SELECT
+            id, 
+			title
+		FROM `tb_sample_program`
+		WHERE id = #{id}
+
+        
+	</select>
+	
+	<insert id="insertProgram">
+		INSERT INTO tb_sample_program(id, title)
+		VALUES (#{id}, #{title})
+
+       
+	</insert>
+	
+	<update id="updateProgram">
+
+		UPDATE tb_sample_program
+		SET title = #{title}
+		WHERE id = #{id}
+
+       
+	</update>
+	
+	<delete id="deleteProgram">
+
+		DELETE FROM tb_sample_program
+		WHERE id = #{id}
+
+	</delete>
+	
+</mapper>
