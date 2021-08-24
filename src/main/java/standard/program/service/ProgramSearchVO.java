@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProgramSearchVO extends ComDefaultVO {
-	private Long searchId;			// 조회 아이디
+	private Long searchId;			// 조회 아이디
 	private String searchTitle;		// 조회 제목
 
 	public Long getSearchId(){
