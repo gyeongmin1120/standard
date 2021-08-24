@@ -9,25 +9,35 @@
 		FROM(
 			SELECT
 				id
-			FROM `tb_sample_program`
+			FROM tb_sample_program
 			WHERE 1=1
-			<if test="searchTitle != null and searchTitle != '' ">
-				 AND title LIKE CONCAT('%', #{searchTitle}, '%')
+			<if test="searchContent != null and searchContent != '' ">
+				<if test="searchOption == 'searchId' ">
+					AND id LIKE CONCAT('%', #{searchContent}, '%')
+				</if>
+				<if test="searchOption == 'searchTitle' ">
+					AND title LIKE CONCAT('%', #{searchContent}, '%')
+				</if>
 			</if>
 			ORDER BY id ASC
 			LIMIT #{firstIndex}, #{recordCountPerPage}
 		) a
-		JOIN `tb_sample_program` b
+		JOIN tb_sample_program b
 		ON a.id = b.id
 	</select>
 	
 	<select id="selectProgramListTotalCount" resultType="int">
 		SELECT
 			COUNT(*)
-		FROM `tb_sample_program`
+		FROM tb_sample_program
 		WHERE 1=1
-		<if test="searchTitle != null and searchTitle != '' ">
-			AND title LIKE CONCAT('%', #{searchTitle}, '%')
+		<if test="searchContent != null and searchContent != '' ">
+			<if test="searchOption == 'searchId' ">
+				AND id LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchOption == 'searchTitle' ">
+				AND title LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
 		</if>
 	</select>
 	
@@ -35,7 +45,7 @@
 		SELECT
 			id, 
 			title
-		FROM `tb_sample_program`
+		FROM tb_sample_program
 		WHERE id = #{id}
 	</select>
 	

@@ -43,8 +43,8 @@ public class ProgramController {
 		
 		model.addAttribute("programList", programService.selectProgramList(programSearchVO));
 		model.addAttribute("paginationInfo", paginationInfo);
-		model.addAttribute("searchTitle", programSearchVO.getSearchTitle());
-		return JSP_DIR + "list";
+		
+		return JSP_DIR + "list.tiles";
 	}
 	
 	/**
@@ -57,7 +57,7 @@ public class ProgramController {
 	public String detail(Long id, ModelMap model) {
 		model.addAttribute("program", programService.selectProgram(id));
 		
-		return JSP_DIR + "detail";
+		return JSP_DIR + "detail.tiles";
 	}
 	
 	/**
@@ -66,7 +66,7 @@ public class ProgramController {
 	 */
 	@GetMapping("/insert.do")
 	public String insert() {
-		return JSP_DIR + "register";
+		return JSP_DIR + "register.tiles";
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class ProgramController {
 	public String update(Long id, ModelMap model) {
 		model.addAttribute("program", programService.selectProgram(id));
 		
-		return JSP_DIR + "register";
+		return JSP_DIR + "register.tiles";
 	}
 	
 	/**

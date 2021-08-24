@@ -12,7 +12,7 @@
 		<result property="fileStreCours" column="FILE_STRE_COURS"/>
 		<result property="orignlFileNm" column="ORIGNL_FILE_NM"/>
 		<result property="streFileNm" column="STRE_FILE_NM"/>
-		<result property="creatDt" column="CREAT_DT"/>			
+		<result property="creatDt" column="CREAT_DT"/>
 	</resultMap>
 
 	<resultMap id="fileDetail" type="egovframework.com.cmm.service.FileVO">
@@ -38,7 +38,7 @@
 			AND 
 				a.ATCH_FILE_ID = b.ATCH_FILE_ID
 			AND 
-				a.USE_AT = 'Y'				
+				a.USE_AT = 'Y'
 			ORDER BY b.FILE_SN
  	</select>
  	
@@ -52,11 +52,11 @@
 	<insert id="insertFileDetail" parameterType="FileVO">
 		
 			INSERT INTO COMTNFILEDETAIL
-			( ATCH_FILE_ID, FILE_SN, FILE_STRE_COURS, STRE_FILE_NM, 
+			( ATCH_FILE_ID, FILE_SN, FILE_STRE_COURS, STRE_FILE_NM,
 			  ORIGNL_FILE_NM, FILE_EXTSN, FILE_SIZE, FILE_CN )
 			VALUES
-			( #{atchFileId}, #{fileSn}, #{fileStreCours}, #{streFileNm}, 
-			  #{orignlFileNm}, #{fileExtsn}, #{fileMg}, #{fileCn} )			
+			( #{atchFileId}, #{fileSn}, #{fileStreCours}, #{streFileNm},
+			  #{orignlFileNm}, #{fileExtsn}, #{fileMg}, #{fileCn} )
 		
 	</insert>	
 	
@@ -64,15 +64,15 @@
 			DELETE FROM COMTNFILEDETAIL
 			WHERE
 				ATCH_FILE_ID = #{atchFileId}
-			AND	
-				FILE_SN = #{fileSn}			
+			AND
+				FILE_SN = #{fileSn}
 	</delete>
  	
 	<select id="getMaxFileSN" parameterType="FileVO" resultType="java.lang.Integer">
 		
 			SELECT IFNULL(MAX(FILE_SN),0)+1 AS FILE_SN
 			FROM COMTNFILEDETAIL
-			WHERE ATCH_FILE_ID =  #{atchFileId}		
+			WHERE ATCH_FILE_ID =  #{atchFileId}
 		
 	</select>
 
@@ -107,42 +107,42 @@
 				COMTNFILE a, COMTNFILEDETAIL b
 			WHERE
 				a.ATCH_FILE_ID = b.ATCH_FILE_ID
-			AND 
+			AND
 				a.USE_AT = 'Y'
  		
 			<if test="searchCnd == 'streFileNm'">AND
-					b.STRE_FILE_NM LIKE CONCAT ('%', #{searchWrd},'%') 		
+					b.STRE_FILE_NM LIKE CONCAT ('%', #{searchWrd},'%'
 			</if>
 			<if test="searchCnd == 'orignlFileNm'">AND
-					b.ORIGNL_FILE_NM LIKE CONCAT ('%', #{searchWrd},'%') 		
+					b.ORIGNL_FILE_NM LIKE CONCAT ('%', #{searchWrd},'%')
 			</if>	
 					
 			ORDER BY a.ATCH_FILE_ID, b.FILE_SN	
 			LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
-				 		
- 	</select>
 
- 	<select id="selectFileListCntByFileNm" parameterType="FileVO" resultType="java.lang.Integer">
- 		
+	</select>
+
+	<select id="selectFileListCntByFileNm" parameterType="FileVO" resultType="java.lang.Integer">
+		
 			SELECT 
 				COUNT(a.ATCH_FILE_ID)
 			FROM
 				COMTNFILE a, COMTNFILEDETAIL b
 			WHERE
 				a.ATCH_FILE_ID = b.ATCH_FILE_ID
-			AND 
-				a.USE_AT = 'Y'				
- 		
+			AND
+				a.USE_AT = 'Y'
+		
 			<if test="searchCnd == 'streFileNm'">AND
-					b.STRE_FILE_NM LIKE CONCAT ('%', #{searchWrd},'%') 		
+					b.STRE_FILE_NM LIKE CONCAT ('%', #{searchWrd},'%')
 			</if>
 			<if test="searchCnd == 'orignlFileNm'">AND
-					b.ORIGNL_FILE_NM LIKE CONCAT ('%', #{searchWrd},'%') 		
-			</if>	 		
- 	</select>
- 	
-  	<select id="selectImageFileList" parameterType="FileVO" resultMap="fileList">
- 		
+					b.ORIGNL_FILE_NM LIKE CONCAT ('%', #{searchWrd},'%')
+			</if>
+	</select>
+	
+	<select id="selectImageFileList" parameterType="FileVO" resultMap="fileList">
+		
 			SELECT 
 				a.ATCH_FILE_ID, b.FILE_CN, b.FILE_SN, b.FILE_STRE_COURS, b.STRE_FILE_NM,
 				b.FILE_EXTSN, b.ORIGNL_FILE_NM, b.FILE_SIZE, a.CREAT_DT
@@ -155,9 +155,9 @@
 			AND
 				UPPER(b.FILE_EXTSN) IN ('GIF','JPG','BMP','PNG')
 			AND 
-				a.USE_AT = 'Y'				
-			ORDER BY b.FILE_SN	
- 		
- 	</select>	
- 	
+				a.USE_AT = 'Y'
+			ORDER BY b.FILE_SN
+
+	</select>
+	
 </mapper>

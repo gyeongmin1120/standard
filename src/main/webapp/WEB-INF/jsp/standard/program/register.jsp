@@ -29,13 +29,14 @@
 		<div class="program-container">
 			<div class="col-sm-6">
 				<form action="<c:url value="/program/register.do"/>" method="POST">
-					<input type="hidden" id="id" name="id" value="${program.id}">
 					<div class="mb-3">
+						<label for="id" class="form-label">ProgramId</label> 
+						<input type="text" class="form-control" id="id" name="id" value="${program.id}">
 						<label for="title" class="form-label">ProgramTitle</label> 
 						<input type="text" class="form-control" id="title" name="title" value="${program.title}" >
 					</div>
 					<div class="d-grid">
-						<button type="submit" class="btn btn-primary">등록</button>
+						<button type="submit" class="btn btn-primary">저장</button>
 					</div>
 				</form>
 			</div>

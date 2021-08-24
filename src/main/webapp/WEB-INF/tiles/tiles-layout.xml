@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<!--tiles를 정의-->
+<tiles-definitions>
+	<!-- 메뉴 탭 타일즈 -->
+	<definition name="layouts-tiles"		template="/WEB-INF/tiles/tiles-layouts.jsp">
+		<put-attribute name="header"		value="/WEB-INF/tiles/tiles-header.jsp" />
+		<put-attribute name="nav"			value="/WEB-INF/tiles/tiles-nav.jsp" />
+		<put-attribute name="left"			value="/WEB-INF/tiles/tiles-left.jsp" />
+		<!--모든 페이지의 content가 반복되지 않고 변하기때문에 빈값으로 설정 -->
+		<put-attribute name="content"		value=""/>
+		<put-attribute name="footer"		value="/WEB-INF/tiles/tiles-footer.jsp" />
+		<put-attribute name="script"		value="/WEB-INF/tiles/tiles-script.jsp" />
+	</definition>
+	
+	<!--name값을 컨트롤러에서 return하는 값과 맞추면 알아서 찾아서 tiles 설정해서 뿌려줌(standard/program/list.tiles)  -->
+	<definition name="*/*/*.tiles" extends="layouts-tiles">
+		<!--동적으로 변하는 content에 대하여 동적인 주소를 작성. {1},{2}은 폴더명, {3}는 확장자를 제외한 파일명  -->
+		<put-attribute name="content"	value="/WEB-INF/jsp/{1}/{2}/{3}.jsp" />
+	</definition>
+</tiles-definitions>
+
