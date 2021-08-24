@@ -1,6 +1,5 @@
 package standard.program.service;
 
-import egovframework.cmmn.ComDefaultVO;
 import lombok.Getter;
 import lombok.Setter;
 

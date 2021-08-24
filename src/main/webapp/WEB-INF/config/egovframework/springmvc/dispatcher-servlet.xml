@@ -14,15 +14,12 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
 	</context:component-scan>
 
-	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
-			<bean
-				class="egovframework.cmmn.web.EgovBindingInitializer" />
+			<bean class="egovframework.cmmn.web.EgovBindingInitializer" />
 		</property>
 	</bean>
-	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
 		<property name="interceptors">
 			<list>
 				<ref bean="localeChangeInterceptor" />
@@ -30,16 +27,13 @@
 		</property>
 	</bean>
 
-	<bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
 	<!-- 쿠키를 이용한 Locale 이용시 <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/> -->
-	<bean id="localeChangeInterceptor"
-		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 		<property name="paramName" value="language" />
 	</bean>
 
-	<bean
-		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="defaultErrorView" value="cmmn/egovError" />
 		<property name="exceptionMappings">
 			<props>
