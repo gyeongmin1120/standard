@@ -10,6 +10,7 @@
 		<!--programVO 추가  -->
 		<typeAlias alias="programVO" type="standard.program.service.ProgramVO"/>
 		<typeAlias alias="programSearchVO" type="standard.program.service.ProgramSearchVO"/>
+		<typeAlias alias="authVO" type="standard.program.service.AuthVO"/>
 		<typeAlias alias="FileVO" type="egovframework.com.cmm.service.FileVO"/>
     </typeAliases>
 </configuration>

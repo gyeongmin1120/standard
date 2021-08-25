@@ -94,12 +94,9 @@
 			</div>
 		</main>
 		<script>
-		
+			//페이징 눌렀을 때 실행되는 함수
 			function page(pageNo){
-				/* document.search.action= '<c:url value="/program/list.do"/>?pageIndex='+pageNo;
-				document.search.submit(); */
-				
-				document.getElementById('pageIndex').value = pageNo;
+				$('#pageIndex').val(pageNo);
 				
 				let data = {
 					'pageIndex' : pageNo,
@@ -118,41 +115,44 @@
 					alert("Error!", "Request failed: " + errorThrown, "error");
 				});
 			}
+			//등록화면으로 이동하는 함수
 			function fncInsert() {
 				let form = document.linkForm;
 				form.method = 'get';
 				form.action = '<c:url value="/program/insert.do"/>';
 				form.submit();
 			}
+			//상세 화면으로 이동하는 함수
 			function fncDetail(id) {
-				document.getElementById('id').value = id;
+				$('#id').val(id);
 				
 				let form = document.linkForm;
 				form.method = 'get';
 				form.action = '<c:url value="/program/detail.do"/>';
 				form.submit();
 			}
-		
+			//수정화면으로 이동하는 함수
 			function fncUpdate(event, id) {
 				event.stopPropagation();
 				
-				document.getElementById('id').value = id;
+				$('#id').val(id);
 				
 				let form = document.linkForm;
 				form.method = 'get';
 				form.action = '<c:url value="/program/update.do"/>';
 				form.submit();
 			}
-			
+			//삭제 함수
 			function fncDelete(id) {
-				document.getElementById('id').value = id;
-				
-				let form = document.linkForm;
-				form.method = 'post';
-				form.action = '<c:url value="/program/delete.do"/>';
-				form.submit();
+				if(confirm("삭제하시겠습니까?")){
+					$('#id').val(id);
+					
+					let form = document.linkForm;
+					form.method = 'post';
+					form.action = '<c:url value="/program/delete.do"/>';
+					form.submit();
+				}
 			}
-		
 		</script>
 	</body>
 </html>

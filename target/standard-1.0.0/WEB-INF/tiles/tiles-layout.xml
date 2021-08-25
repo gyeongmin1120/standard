@@ -16,9 +16,10 @@
 		<put-attribute name="script"		value="/WEB-INF/tiles/tiles-script.jsp" />
 	</definition>
 	
-	<definition name="*/*.tiles" extends="layouts-tiles">
-		<!--동적으로 변하는 content에 대하여 동적인 주소를 작성. {1}은 폴더명, {2}는 확장자를 제외한 파일명  -->
-		<put-attribute name="content"	value="/WEB-INF/jsp/{0}.jsp" />
+	<!--name값을 컨트롤러에서 return하는 값과 맞추면 알아서 찾아서 tiles 설정해서 뿌려줌(standard/program/list.tiles)  -->
+	<definition name="*/*/*.tiles" extends="layouts-tiles">
+		<!--동적으로 변하는 content에 대하여 동적인 주소를 작성. {1},{2}은 폴더명, {3}는 확장자를 제외한 파일명  -->
+		<put-attribute name="content"	value="/WEB-INF/jsp/{1}/{2}/{3}.jsp" />
 	</definition>
 </tiles-definitions>
 

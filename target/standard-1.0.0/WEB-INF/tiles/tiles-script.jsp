@@ -10,17 +10,19 @@
 	<%-- <script src="<c:url value="/resources/vendor/jquery-easing/jquery.easing.min.js"/>"></script> --%>
 
 	<!-- Custom scripts for all pages-->
-	<%-- <script src="<c:url value="/resources/js/scripts.js"/>"></script> --%>
+	<script src="<c:url value="/resources/js/scripts.js"/>"></script>
 
 	<%-- <script src="<c:url value="/resources/vendor/chart.js/Chart.min.js"/>"></script> --%>
 	<%-- <script src="<c:url value="/resources/js/common.js"/>"></script> --%>
 
 
 	<!-- 제이쿼리 ui js -->
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 	
 	
 	<!-- 제이쿼리 ui js(Calendar) -->
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+ -->
 	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>

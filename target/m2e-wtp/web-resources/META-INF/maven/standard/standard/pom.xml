@@ -268,6 +268,13 @@
 			<version>3.0.8</version>
 		</dependency>
 		
+		<!--비밀번호 복호화 관련  -->
+		<!-- <dependency>
+			<groupId>egovframework.rte</groupId>
+			<artifactId>egovframework.rte.fdl.crypto</artifactId>
+			<version>3.9.0</version>
+		</dependency> -->
+		
 	</dependencies>
 
 	<build>

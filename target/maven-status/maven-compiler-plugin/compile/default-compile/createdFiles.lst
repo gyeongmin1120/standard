@@ -11,17 +11,21 @@ egovframework\cmmn\ComDefaultVO.class
 egovframework\com\utl\sim\service\EgovClntInfo.class
 egovframework\com\cmm\service\EgovUserDetailsService.class
 egovframework\com\cmm\web\EgovMultipartResolver.class
+standard\auth\mapper\AuthMapper.class
+standard\auth\service\AuthService.class
 egovframework\com\cmm\EgovBrowserUtil.class
 egovframework\cmmn\web\EgovBindingInitializer.class
 egovframework\com\cmm\service\EgovFileMngUtil.class
 egovframework\com\cmm\service\impl\EgovComAbstractDAO.class
 egovframework\com\utl\fcc\service\EgovFormBasedFileVo.class
 egovframework\com\cmm\service\impl\EgovFileMngServiceImpl.class
+standard\auth\service\AuthVO.class
 egovframework\com\cmm\web\EgovImageProcessController.class
 egovframework\cmmn\EgovSampleOthersExcepHndlr.class
 egovframework\cmmn\web\TextPaginationRenderer.class
 egovframework\com\utl\fcc\service\EgovFormBasedUUID.class
 egovframework\com\cmm\service\EgovFileMngService.class
+standard\auth\web\AuthController.class
 egovframework\com\cmm\service\FileVO.class
 egovframework\com\cmm\util\EgovUserDetailsHelper.class
 egovframework\cmmn\web\EgovComUtlController.class
@@ -35,4 +39,5 @@ egovframework\cmmn\web\EgovImgPaginationRenderer.class
 standard\program\mapper\ProgramMapper.class
 standard\program\web\ProgramController.class
 egovframework\com\utl\fcc\service\EgovFileUploadUtil.class
+standard\auth\service\impl\AuthServiceImpl.class
 standard\program\service\ProgramService.class

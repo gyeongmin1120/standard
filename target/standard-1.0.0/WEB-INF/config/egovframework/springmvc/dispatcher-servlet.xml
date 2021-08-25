@@ -59,7 +59,7 @@
 	</bean>
 	<!--/tiles  -->
 	
-	<!--tiles 추가로 인한 주석처리  -->
+	<!--tiles 추가로 인한 p:order 변경 -->
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"
 		p:viewClass="org.springframework.web.servlet.view.JstlView" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" /> 
 

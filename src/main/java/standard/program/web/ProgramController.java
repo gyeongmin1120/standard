@@ -51,10 +51,11 @@ public class ProgramController {
 	 * 샘플 프로그램 상세 화면 조회
 	 * @param id
 	 * @param model
+	 * @param programSearchVO
 	 * @return
 	 */
 	@GetMapping("/detail.do")
-	public String detail(Long id, ModelMap model) {
+	public String detail(Long id, ModelMap model, ProgramSearchVO programSearchVO) {
 		model.addAttribute("program", programService.selectProgram(id));
 		
 		return JSP_DIR + "detail.tiles";
@@ -62,19 +63,27 @@ public class ProgramController {
 	
 	/**
 	 * 샘플 프로그램 등록 화면 조회
+	 * @param programSearchVO
+	 * @param model
 	 * @return
 	 */
 	@GetMapping("/insert.do")
-	public String insert() {
+	public String insert(ProgramSearchVO programSearchVO, ModelMap model) {
+		model.addAttribute("programList", programService.selectProgramList(programSearchVO));
+		model.addAttribute("paginationInfo", paginationInfo);
+		
 		return JSP_DIR + "register.tiles";
 	}
 	
 	/**
 	 * 샘플 프로그램 수정 화면 조회
+	 * @param id
+	 * @param model
+	 * @param programSearchVO
 	 * @return
 	 */
 	@GetMapping("/update.do")
-	public String update(Long id, ModelMap model) {
+	public String update(Long id, ModelMap model, ProgramSearchVO programSearchVO) {
 		model.addAttribute("program", programService.selectProgram(id));
 		
 		return JSP_DIR + "register.tiles";
@@ -83,29 +92,54 @@ public class ProgramController {
 	/**
 	 * 샘플 프로그램 등록/수정
 	 * @param programVO
+	 * @param programSearchVO
+	 * @param model
 	 * @return
 	 */
 	@PostMapping("/register.do")
-	public String register(ProgramVO programVO) {
+	public String register(ProgramVO programVO, ProgramSearchVO programSearchVO, ModelMap model) {
+		
+		//로그인 정보
+		//UserVO userVO = (UserVO)session.getAttribute("userVO");
+		//UserVO user = authMapper.selectUserByEmail(userVO.getEmail());
+		
 		if(programVO.getId() == null) {
 			programService.insertProgram(programVO);
 		} else {
 			programService.updateProgram(programVO);
 		}
 		
-		return "redirect:/";
+		setPage(programSearchVO);
+		
+		paginationInfo.setTotalRecordCount(programService.selectProgramListTotalCount(programSearchVO));
+		
+		model.addAttribute("programList", programService.selectProgramList(programSearchVO));
+		model.addAttribute("paginationInfo", paginationInfo);
+		
+		return JSP_DIR + "list.tiles";
 	}
 	
 	/**
 	 * 샘플 프로그램 삭제
 	 * @param id
+	 * @param model
+	 * @param programSearchVO
 	 * @return
 	 */
 	@PostMapping("/delete.do")
-	public String delete(Long id) {
-		programService.deleteProgram(id);
+	public String delete(Long id, ModelMap model, ProgramSearchVO programSearchVO) {
 		
-		return "redirect:/";
+		programService.deleteProgram(id);
+		model.addAttribute("result", "sucess");
+		
+		setPage(programSearchVO);
+		
+		paginationInfo.setTotalRecordCount(programService.selectProgramListTotalCount(programSearchVO));
+		
+		model.addAttribute("programList", programService.selectProgramList(programSearchVO));
+		model.addAttribute("paginationInfo", paginationInfo);
+		
+		return JSP_DIR + "list.tiles";
 	}
 	
 	public void setPage(ProgramSearchVO programSearchVO){

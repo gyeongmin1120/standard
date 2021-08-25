@@ -16,9 +16,10 @@
 
 	<!-- Custom styles for this template-->
 	<%-- <link href="<c:url value="/resources/css/sb-admin-2.css"/>" rel="stylesheet"> --%>
-	<%-- <link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet" /> --%>
+	<link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet" />
 	
 	<!-- 제이쿼리 ui css -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
 	

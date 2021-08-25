@@ -17,6 +17,9 @@ public class ProgramServiceImpl implements ProgramService {
 	@Resource(name = "programMapper")
 	private ProgramMapper programMapper;
 	
+//	@Resource(name = "authMapper")
+//	private AuthMapper authMapper;
+//	
 	/**
 	 * 샘플 프로그램 리스트 조회
 	 */
@@ -42,7 +45,13 @@ public class ProgramServiceImpl implements ProgramService {
 	 * 샘플 프로그램 등록
 	 */
 	public void insertProgram(ProgramVO programVO) {
+		
+//		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+//		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
+//		httpSession.setAttribute("userVO", user); 
+//		
 		programMapper.insertProgram(programVO);
+		
 	}
 	
 	/**

@@ -5,41 +5,62 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Program</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-		<style>
-			html, body {
-				width: 100%;
-				height: 100%;
-				margin: 0;
-				padding: 0;
-			}
-			
-			.program-container {
-				width: 100%;
-				height: 100%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-		</style>
 	</head>
 	
-	<body>
-		<div class="program-container">
-			<div class="col-sm-6">
-				<div class="mb-3">		
-					<label for="id" class="form-label">ProgramId</label> 
-					<input type="text" class="form-control" id="id" name="id" value="${program.id}" readonly>
-					<label for="title" class="form-label">ProgramTitle</label> 
-					<input type="text" class="form-control" id="title" name="title" value="${program.title}" readonly>
+	<body id="page-top">
+		<main>
+			<div class="container-fluid">
+				<div class="card mt-2 mb-4">
+					<div class="card-header">
+						<i class="fas fa-table me-1"></i>
+						STANDARD 상세
+					</div>
+					<div class="card-body" >
+						<!--list table 시작 -->
+						<table class="table table-hover mt-5">
+							<colgroup>
+								<col width="30%"/>
+								<col width="70%"/>
+							</colgroup>
+							
+							<tbody>
+								<tr>
+									<td><label for="id" class="form-label">ProgramId</label></td>
+									<td><input type="text" class="form-control" id="id" name="id" value="${program.id}" readonly></td>
+								</tr>
+								<tr>
+									<td><label for="title" class="form-label">ProgramTitle</label></td>
+									<td><input type="text" class="form-control" id="title" name="title" value="${program.title}" readonly></td>
+								</tr>
+							</tbody>
+						</table>
+						<!--list table 끝 -->
+						<!--목록 버튼  -->
+						<div class="d-flex justify-content-end">
+							<button class="btn btn-dark" onclick="fncList();">목록</button>
+						</div>
+					</div>
 				</div>
-				<div class="d-grid">
-					<a href="<c:url value="/program/list.do"/>" class="btn btn-primary">목록</a>
-				</div>
+				<!--목록 화면 이동에 필요한 검색조건, 페이징 정보  -->
+				<form name="linkForm" id="linkForm">
+					<input type="hidden" id="id" name="id"/>
+					<input type="hidden" id="searchOption" name="searchOption" value="${programSearchVO.searchOption}"/>
+					<input type="hidden" id="searchContent" name="searchContent" value="${programSearchVO.searchContent}"/>
+					<input type="hidden" id="pageIndex" name="pageIndex" value="${programSearchVO.pageIndex}"/>
+				</form>
+				
 			</div>
-		</div>
+		</main>
+		<script>
+			//목록으로 이동하는 함수
+			function fncList() {
+				let form = document.linkForm;
+				form.method = 'get';
+				form.action = '<c:url value="/program/list.do"/>';
+				form.submit();
+			}
+		</script>
+		
 	</body>
 
 </html>
