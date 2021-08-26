@@ -21,5 +21,6 @@
 		<!--동적으로 변하는 content에 대하여 동적인 주소를 작성. {1},{2}은 폴더명, {3}는 확장자를 제외한 파일명  -->
 		<put-attribute name="content"	value="/WEB-INF/jsp/{1}/{2}/{3}.jsp" />
 	</definition>
+	
 </tiles-definitions>
 

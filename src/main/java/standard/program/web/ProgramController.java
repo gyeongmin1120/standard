@@ -8,9 +8,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import standard.auth.service.UserVO;
 import standard.program.service.ProgramSearchVO;
 import standard.program.service.ProgramService;
 import standard.program.service.ProgramVO;
@@ -37,10 +39,11 @@ public class ProgramController {
 	 */
 	@RequestMapping("/list.do")
 	public String list(ProgramSearchVO programSearchVO, ModelMap model) {
+		//@SessionAttribute("userVO") UserVO user
+		
 		setPage(programSearchVO);
 		
 		paginationInfo.setTotalRecordCount(programService.selectProgramListTotalCount(programSearchVO));
-		
 		model.addAttribute("programList", programService.selectProgramList(programSearchVO));
 		model.addAttribute("paginationInfo", paginationInfo);
 		

@@ -11,4 +11,11 @@ public interface AuthService {
 	 * @return
 	 */
 	public Map<String, String> login(UserVO userVO);
+	
+	/**
+	 * 로그인
+	 * @param userVO
+	 * @return
+	 */
+	public Map<String, String> signUp(UserVO userVO);
 }

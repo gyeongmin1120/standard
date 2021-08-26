@@ -1,5 +1,7 @@
 package standard.auth.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import standard.auth.service.UserVO;
@@ -32,6 +36,28 @@ public class AuthController {
 	private EgovPropertyService propertiesService;
 	
 	/**
+	 * 회원가입 화면으로 이동
+	 * @return
+	 */
+	@GetMapping("/signUp.do")
+	public String signUp() {
+		return JSP_DIR + "signUp";
+	}
+	/**
+	 * 회원가입 화면으로 이동
+	 * @return
+	 */
+	@PostMapping("/signUp.do")
+	public ModelAndView signUp(UserVO userVO) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		//modelAndView.addObject("result", authService.signUp(userVO));
+		modelAndView.setViewName("jsonView");
+		
+		return modelAndView;
+	}
+	
+	/**
 	 * 로그인 화면으로 이동
 	 * @return
 	 */
@@ -54,4 +80,11 @@ public class AuthController {
 		return modelAndView;
 	}
 	
+//	public static UserVO getUser() {
+//		ServletRequestAttributes servletRequestAttribute = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+//		HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
+//		
+//		return (UserVO)httpSession.getAttribute("userVO");
+//	
+//	}
 }

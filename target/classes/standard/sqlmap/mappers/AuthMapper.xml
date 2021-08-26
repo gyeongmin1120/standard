@@ -12,4 +12,21 @@
 		WHERE email = #{email}
 	</select>
 	
+	<insert id="insertUser">
+		#회원가입
+		INSERT INTO tb_user(name, email, password)
+		VALUES( #{name}, #{email}, #{password})
+	
+	</insert>
+	
+	<select id="checkUserEmail" resultType="int">
+		#회원 email 중복확인
+		
+		SELECT 
+			COUNT(*)
+		FROM tb_user
+		WHERE email = #{email}
+		
+	</select>
+	
 </mapper>

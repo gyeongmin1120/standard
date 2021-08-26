@@ -25,6 +25,33 @@ public class AuthServiceImpl implements AuthService {
 
 	//@Autowired
 	//private EgovPasswordEncoder egovPasswordEncoder;
+	/**
+	 * 로그인
+	 * @param userVO
+	 * @return
+	 */
+	public Map<String, String> signUp(UserVO userVO) {
+		Map<String, String> resultMap = new HashMap<>();
+
+//		UserVO user = authMapper.selectUserByEmail(userVO.getEmail());
+//
+//		if(user == null) { 
+//			resultMap.put("type", "fail"); 
+//			resultMap.put("message","존재하지 않는 이메일 입니다."); 
+//		}else {
+//			if(user.getPassword().equals(userVO.getPassword())) { 
+//				//egovPasswordEncoder.encryptPassword(userVO.getPassword())
+//				ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+//				HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
+//				httpSession.setAttribute("userVO", user); 
+//				resultMap.put("type", "success"); 
+//			}else { 
+//				resultMap.put("type", "fail"); 
+//				resultMap.put("message","비밀번호가 일치하지 않습니다."); 
+//				} 
+//			}
+		return resultMap;
+	}
 	
 	/**
 	 * 로그인

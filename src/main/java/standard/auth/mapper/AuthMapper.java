@@ -10,4 +10,8 @@ import standard.program.service.ProgramVO;
 @Mapper("authMapper")
 public interface AuthMapper {
 	public UserVO selectUserByEmail(String email);
+	
+	public void insertUser(UserVO userVO);
+	
+	public int checkUserEmail(UserVO userVO);
 }

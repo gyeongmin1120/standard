@@ -3,9 +3,13 @@ package standard.program.service.impl;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import standard.auth.service.UserVO;
 import standard.program.mapper.ProgramMapper;
 import standard.program.service.ProgramSearchVO;
 import standard.program.service.ProgramService;
@@ -46,10 +50,11 @@ public class ProgramServiceImpl implements ProgramService {
 	 */
 	public void insertProgram(ProgramVO programVO) {
 		
-//		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
-//		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
-//		httpSession.setAttribute("userVO", user); 
-//		
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
+		UserVO userEmail = (UserVO)httpSession.getAttribute("userVO");
+		
+		programVO.setRegisterId(userEmail.getEmail());
 		programMapper.insertProgram(programVO);
 		
 	}
@@ -58,6 +63,12 @@ public class ProgramServiceImpl implements ProgramService {
 	 * 샘플 프로그램 수정
 	 */
 	public void updateProgram(ProgramVO programVO) {
+		
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
+		UserVO userEmail = (UserVO)httpSession.getAttribute("userVO");
+		
+		programVO.setUpdateUserId(userEmail.getEmail());
 		programMapper.updateProgram(programVO);
 	}
 	
