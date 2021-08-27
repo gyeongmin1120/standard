@@ -13,5 +13,5 @@ public interface AuthMapper {
 	
 	public void insertUser(UserVO userVO);
 	
-	public int checkUserEmail(UserVO userVO);
+	public int checkUserEmail(String email);
 }

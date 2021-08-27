@@ -5,10 +5,12 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import standard.auth.service.AuthService;
 import standard.auth.service.UserVO;
 import standard.program.mapper.ProgramMapper;
 import standard.program.service.ProgramSearchVO;
@@ -21,8 +23,8 @@ public class ProgramServiceImpl implements ProgramService {
 	@Resource(name = "programMapper")
 	private ProgramMapper programMapper;
 	
-//	@Resource(name = "authMapper")
-//	private AuthMapper authMapper;
+	@Autowired
+	private AuthService authService;
 //	
 	/**
 	 * 샘플 프로그램 리스트 조회
@@ -50,11 +52,7 @@ public class ProgramServiceImpl implements ProgramService {
 	 */
 	public void insertProgram(ProgramVO programVO) {
 		
-		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
-		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
-		UserVO userEmail = (UserVO)httpSession.getAttribute("userVO");
-		
-		programVO.setRegisterId(userEmail.getEmail());
+		programVO.setRegisterId(authService.getUserSession().getEmail());
 		programMapper.insertProgram(programVO);
 		
 	}
@@ -63,12 +61,7 @@ public class ProgramServiceImpl implements ProgramService {
 	 * 샘플 프로그램 수정
 	 */
 	public void updateProgram(ProgramVO programVO) {
-		
-		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
-		HttpSession httpSession = servletRequestAttributes.getRequest().getSession();
-		UserVO userEmail = (UserVO)httpSession.getAttribute("userVO");
-		
-		programVO.setUpdateUserId(userEmail.getEmail());
+		programVO.setUpdateUserId(authService.getUserSession().getEmail());
 		programMapper.updateProgram(programVO);
 	}
 	

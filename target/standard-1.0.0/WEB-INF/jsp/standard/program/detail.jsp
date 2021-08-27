@@ -52,7 +52,7 @@
 			</div>
 		</main>
 		<script>
-		
+			//목록으로 이동하는 함수
 			function fncList() {
 				let form = document.linkForm;
 				form.method = 'get';

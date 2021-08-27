@@ -7,9 +7,11 @@ egovframework\cmmn\EgovSampleExcepHndlr.class
 egovframework\com\cmm\service\EgovProperties.class
 egovframework\com\utl\fcc\service\EgovStringUtil.class
 egovframework\com\cmm\web\EgovFileDownloadController.class
+egovframework\cmmn\interceptor\AuthenticationInterceptor.class
 egovframework\cmmn\ComDefaultVO.class
 egovframework\com\utl\sim\service\EgovClntInfo.class
 egovframework\com\cmm\service\EgovUserDetailsService.class
+standard\auth\service\UserVO.class
 egovframework\com\cmm\web\EgovMultipartResolver.class
 standard\auth\mapper\AuthMapper.class
 standard\auth\service\AuthService.class
@@ -19,7 +21,6 @@ egovframework\com\cmm\service\EgovFileMngUtil.class
 egovframework\com\cmm\service\impl\EgovComAbstractDAO.class
 egovframework\com\utl\fcc\service\EgovFormBasedFileVo.class
 egovframework\com\cmm\service\impl\EgovFileMngServiceImpl.class
-standard\auth\service\AuthVO.class
 egovframework\com\cmm\web\EgovImageProcessController.class
 egovframework\cmmn\EgovSampleOthersExcepHndlr.class
 egovframework\cmmn\web\TextPaginationRenderer.class

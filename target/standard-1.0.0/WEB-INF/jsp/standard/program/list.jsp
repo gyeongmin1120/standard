@@ -94,7 +94,7 @@
 			</div>
 		</main>
 		<script>
-		
+			//페이징 눌렀을 때 실행되는 함수
 			function page(pageNo){
 				$('#pageIndex').val(pageNo);
 				
@@ -115,12 +115,14 @@
 					alert("Error!", "Request failed: " + errorThrown, "error");
 				});
 			}
+			//등록화면으로 이동하는 함수
 			function fncInsert() {
 				let form = document.linkForm;
 				form.method = 'get';
 				form.action = '<c:url value="/program/insert.do"/>';
 				form.submit();
 			}
+			//상세 화면으로 이동하는 함수
 			function fncDetail(id) {
 				$('#id').val(id);
 				
@@ -129,7 +131,7 @@
 				form.action = '<c:url value="/program/detail.do"/>';
 				form.submit();
 			}
-		
+			//수정화면으로 이동하는 함수
 			function fncUpdate(event, id) {
 				event.stopPropagation();
 				
@@ -140,7 +142,7 @@
 				form.action = '<c:url value="/program/update.do"/>';
 				form.submit();
 			}
-			
+			//삭제 함수
 			function fncDelete(id) {
 				if(confirm("삭제하시겠습니까?")){
 					$('#id').val(id);

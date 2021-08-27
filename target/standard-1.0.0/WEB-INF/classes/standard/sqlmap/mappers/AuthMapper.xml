@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="standard.auth.mapper.AuthMapper">
-
+	
+	<select id="selectUserByEmail" resultType="userVO">
+		# email 기준으로 회원 정보 가져오기
+		 
+		SELECT
+			email,
+			password
+		FROM tb_user
+		WHERE email = #{email}
+	</select>
+	
+	<insert id="insertUser">
+		#회원가입
+		
+		INSERT INTO tb_user(name, email, password)
+		VALUES( #{name}, #{email}, #{password})
+	
+	</insert>
+	
+	<select id="checkUserEmail" resultType="int">
+		#회원 email 중복확인
+		
+		SELECT 
+			COUNT(*)
+		FROM tb_user
+		WHERE email = #{email}
+		
+	</select>
 	
 </mapper>

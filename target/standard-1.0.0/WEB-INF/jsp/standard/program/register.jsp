@@ -57,9 +57,9 @@
 			</div>
 		</main>
 		<script type="text/javascript">
-			
+			//등록 함수
 			function fncRegister(){
-				 if(confirm("등록하시겠습니까?")){
+				if(confirm("등록하시겠습니까?")){
 					
 					let form = document.registrationForm;
 					form.method = "post";
@@ -67,7 +67,7 @@
 					form.submit();
 				}
 			}
-			
+			//수정 함수
 			function fncUpdate(no) {
 				
 				if(confirm("수정하시겠습니까?")){
@@ -78,7 +78,7 @@
 					form.submit();
 				}
 			}
-			
+			//목록 이동 함수
 			function fncList() {
 				let form = document.registrationForm;
 				form.method = 'get';

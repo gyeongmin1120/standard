@@ -25,4 +25,23 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <!-- 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
  -->
+	<script>
+		//로그아웃 함수
+		function fncLogout() {
+			
+			$.ajax({
+				url: '<c:url value="/auth/logout.do"/>',
+				type: 'post',
+				//data: data,
+				success: function(response) {
+					if(response.result.type == 'success') {
+						alert(response.result.message);
+						location.href = '<c:url value="/auth/login.do"/>';
+					} else if(response.result.type == 'fail') {
+						alert(response.result.message);
+					}
+				}
+			});
+		}
+	</script>
 	

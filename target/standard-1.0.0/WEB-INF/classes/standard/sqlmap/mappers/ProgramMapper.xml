@@ -51,13 +51,13 @@
 	
 	<insert id="insertProgram">
 		INSERT INTO tb_sample_program(id, title, register_id, register_date)
-		VALUES (#{id}, #{title}, "admin", NOW())
+		VALUES (#{id}, #{title}, #{registerId}, NOW())
 	</insert>
 	
 	<update id="updateProgram">
 		UPDATE tb_sample_program
 		SET title = #{title},
-			update_user_id = "update",
+			update_user_id = #{updateUserId},
 			update_date = NOW()
 		WHERE id = #{id}
 	</update>

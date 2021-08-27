@@ -81,8 +81,9 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/*.do" />
-			<mvc:exclude-mapping path="/auth/login.do" />
 			<mvc:exclude-mapping path="/auth/signUp.do" />
+			<mvc:exclude-mapping path="/auth/checkUserEmail.do" />
+			<mvc:exclude-mapping path="/auth/login.do" />
 			<bean class="egovframework.cmmn.interceptor.AuthenticationInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

@@ -35,6 +35,19 @@ public class AuthController {
 	@Autowired
 	private EgovPropertyService propertiesService;
 	
+	
+	/**
+	 * 사용자 email 중복 체크
+	 */
+	@GetMapping("/checkUserEmail.do")
+	public ModelAndView checkUserEmail(String email) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("result", authService.checkUserEmail(email));
+		modelAndView.setViewName("jsonView");
+		
+		return modelAndView;
+	}
 	/**
 	 * 회원가입 화면으로 이동
 	 * @return
@@ -51,7 +64,7 @@ public class AuthController {
 	public ModelAndView signUp(UserVO userVO) {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		//modelAndView.addObject("result", authService.signUp(userVO));
+		modelAndView.addObject("result", authService.signUp(userVO));
 		modelAndView.setViewName("jsonView");
 		
 		return modelAndView;
@@ -80,11 +93,19 @@ public class AuthController {
 		return modelAndView;
 	}
 	
-//	public static UserVO getUser() {
-//		ServletRequestAttributes servletRequestAttribute = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
-//		HttpSession httpSession = servletRequestAttribute.getRequest().getSession(true);
-//		
-//		return (UserVO)httpSession.getAttribute("userVO");
-//	
-//	}
+	/**
+	 * 로그아웃 
+	 * @param userVO
+	 * @return
+	 */
+	@PostMapping("/logout.do")
+	public ModelAndView logout(UserVO userVO) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("result", authService.logout());
+		modelAndView.setViewName("jsonView");
+		
+		return modelAndView;
+	}
+	
 }
